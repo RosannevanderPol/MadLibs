@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MadLibs</string>
+    <string name="action_settings">Settings</string>
+    <string name="welcome">Welcome to Madlibs! What are madlibs? They are short, silly stories based on your words. Just pick ten words and read your own short story afterwards!</string>
+    <string name="start">Get started!</string>
+    <string name="afb">afbeelding</string>
+</resources>
