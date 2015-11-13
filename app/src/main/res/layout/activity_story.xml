@@ -1,14 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#e7190e">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Your story: "
+        android:text="@string/storytitle"
+        android:id="@+id/textView4"
+        android:textAlignment="center"
+        android:padding="10dp"
+        android:textSize="24sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="@string/story"
         android:id="@+id/textView3"
         android:layout_gravity="center"
-        android:textAlignment="center"
         android:textColor="#550c59"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:layout_weight="10"
+        android:textAlignment="center" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/make"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:padding="15dp"
+        android:id="@+id/buttonAgain"
+        android:layout_gravity="center_horizontal|bottom"
+        android:onClick="AgainClick" />
+
 </LinearLayout>

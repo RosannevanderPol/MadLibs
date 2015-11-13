@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:background="#e7190e">
 
     <TextView
         android:layout_width="wrap_content"
@@ -27,85 +28,67 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/adverb1"
+            android:id="@+id/aDvErB"
             android:text="adverb" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/number1"
+            android:id="@+id/NUMBER"
             android:text="number" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/nounMV1"
+            android:id="@+id/Plural_Noun"
             android:text="plural noun" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/verb1"
-            android:text="verb" />
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/bodypart"
+            android:id="@+id/body_part"
             android:text="bodypart" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/verb2"
+            android:id="@+id/verb"
             android:text="verb" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/adverb2"
+            android:id="@+id/adverb"
             android:text="adverb" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/nounMV2"
+            android:id="@+id/pluRAL_nOUN"
             android:text="plural noun" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/nounMV3"
+            android:id="@+id/plural_noun"
             android:text="plural noun" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/nounMV4"
-            android:text="plural noun" />
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/funnynoise"
+            android:id="@+id/FUNNY_noise"
             android:text="funny noise" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/verb3"
-            android:text="verb" />
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/number2"
+            android:id="@+id/Number"
             android:text="number" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/verb4"
+            android:id="@+id/verB"
             android:text="verb" />
     </GridLayout>
 
