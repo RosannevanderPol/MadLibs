@@ -5,17 +5,19 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-public class Start extends AppCompatActivity {
+public class Start extends AppCompatActivity
+{
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_start);
+        setContentView(R.layout.content_start);
     }
 
-    public void GetstartedClick(View view) {
-        Intent Getstarted = new Intent(this, SecondScreen.class);
-        Getstarted.putExtra("callingActivity", "MainActivity");
+    public void GetstartedClick(View view)
+    {
+        Intent Getstarted = new Intent(this, choosestory.class);
         startActivity(Getstarted);
     }
 }
