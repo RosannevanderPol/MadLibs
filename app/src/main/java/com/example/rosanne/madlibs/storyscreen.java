@@ -33,4 +33,23 @@ public class storyscreen extends AppCompatActivity
         Intent again =new Intent(this, Start.class);
         startActivity(again);
     }
+
+    // Method to save the current state
+    @Override
+    public void onSaveInstanceState(Bundle outState)
+    {
+        super.onSaveInstanceState(outState);
+        // Pass story
+        outState.putString("story", curstory);
+    }
+
+    // Method for restoring data also enables turning of screen
+    @Override
+    public void onRestoreInstanceState(Bundle inState)
+    {
+        super.onRestoreInstanceState(inState);
+        // Retrieve story
+        curstory = inState.getString("story");
+        storytell.setText(curstory);
+    }
 }

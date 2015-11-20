@@ -113,6 +113,37 @@ public class choosewords extends AppCompatActivity
         placeholder.setText(getString(R.string.placeholders));
         placeholdercount.setText(getString(R.string.placeholderscount));
     }
+
+    //Method to save the current state
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+
+        super.onSaveInstanceState(outState);
+        /* send checker id and story element
+         */
+        outState.putInt("checker", checker);
+        outState.putSerializable("parsing", parsing);
+    }
+
+    /* Method in order to retrieve data after pause
+       also enables rotation
+     */
+    @Override
+    public void onRestoreInstanceState(Bundle inState) {
+
+        super.onRestoreInstanceState(inState);
+
+        /* retrieve checker id and get story element back
+        */
+        checker = inState.getInt("checker");
+        parsing = (Story) inState.getSerializable("parsing");
+
+        /* reset text and fetch placeholder
+        */
+        resetText();
+        placeholder.append(" " + parsing.getNextPlaceholder());
+        placeholdercount.append(" " + parsing.getPlaceholderRemainingCount());
+    }
 }
 
 

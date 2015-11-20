@@ -63,4 +63,18 @@ public class choosestory extends AppCompatActivity
             startActivity(passinfo);
         }
     }
+
+    // Method to enable rotation
+    @Override
+    public void onSaveInstanceState(Bundle outState)
+    {
+        super.onSaveInstanceState(outState);
+    }
+
+    // Method to enable rotation
+    @Override
+    public void onRestoreInstanceState(Bundle inState)
+    {
+        super.onRestoreInstanceState(inState);
+    }
 }

@@ -20,6 +20,20 @@ public class Start extends AppCompatActivity
         Intent Getstarted = new Intent(this, choosestory.class);
         startActivity(Getstarted);
     }
+
+    // Method to enable rotation
+    @Override
+    public void onSaveInstanceState(Bundle outState)
+    {
+        super.onSaveInstanceState(outState);
+    }
+
+    // Method to enable rotation
+    @Override
+    public void onRestoreInstanceState(Bundle inState)
+    {
+        super.onRestoreInstanceState(inState);
+    }
 }
 
 
