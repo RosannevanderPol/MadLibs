@@ -85,7 +85,7 @@ public class choosewords extends AppCompatActivity
                     String spokenText = list.get(0);
                     processInput(spokenText);
 
-                    textshow.setText(list.get(0));
+                    inputtext.setText(list.get(0));
                 }
                 break;
             }
