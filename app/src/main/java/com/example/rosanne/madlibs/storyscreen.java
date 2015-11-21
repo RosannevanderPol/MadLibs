@@ -1,8 +1,9 @@
 package com.example.rosanne.madlibs;
 
 import android.content.Intent;
-import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
@@ -12,12 +13,25 @@ public class storyscreen extends AppCompatActivity
     public  TextView storytell;
     public  Story parsing;
     public String curstory;
+    public boolean  textspeaker = false;
+    public TextToSpeech translator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_story);
+
+        translator = new TextToSpeech(this, new TextToSpeech.OnInitListener()
+        {
+            @Override
+            public void onInit(int status)
+            {
+                translator.speak("" +curstory, TextToSpeech.QUEUE_FLUSH, null);
+                textspeaker = true;
+            }
+        });
+
 
         // put story on the screen
         storytell = (TextView) findViewById(R.id.storyviewer);
