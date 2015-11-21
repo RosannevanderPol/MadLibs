@@ -93,26 +93,30 @@ public class choosewords extends AppCompatActivity
         }
 
 
-    public void inputWord(View z) {
+    public void inputWord(View z)
+    {
         // Get words from the textfield
         String input = String.valueOf(inputtext.getText());
         inputtext.setText("");
 
         // if input are not letters: errormessage
-        if (!input.matches("[a-zA-Z\\s]+") && errorcheck == false) {
+        if (!input.matches("[a-zA-Z\\s]+") && errorcheck == false)
+        {
             textshow.setText(getString(R.string.errorinput));
             errorcheck = true;
         }
         // else pass input
-        else {
+        else
+        {
             processInput(input);
         }
     }
 
-         /* Method for handling the spoken/written input of the user. */
-        public void processInput(String input) {
+         // Method for handling the spoken/written input of the user.
+        public void processInput(String input)
+        {
 
-        /* Send input to parser. */
+        // Send input to parser.
         parsing.fillInPlaceholder(input);
         if (errorcheck == true){
             textshow.setText(getString(R.string.inputword));
@@ -132,17 +136,17 @@ public class choosewords extends AppCompatActivity
 
 
 
-        /* If tts is ready, prompt the required word type through spoken text. */
+        // If tts is ready, prompt the required word type through spoken text
         else if (textspeaker)
         {
-            translator.speak("Please enter a " + parsing.getNextPlaceholder().toLowerCase(), TextToSpeech.QUEUE_FLUSH, null);
+            translator.speak("Please enter a " + parsing.getNextPlaceholder(), TextToSpeech.QUEUE_FLUSH, null);
         }
 
         // update words
         resetText();
         placeholder.append(" " + parsing.getNextPlaceholder());
         placeholdercount.append(" " + counter);
-    }
+        }
 
 
     // load the selected story
