@@ -22,17 +22,6 @@ public class storyscreen extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_story);
 
-        translator = new TextToSpeech(this, new TextToSpeech.OnInitListener()
-        {
-            @Override
-            public void onInit(int status)
-            {
-                translator.speak("" +curstory, TextToSpeech.QUEUE_FLUSH, null);
-                textspeaker = true;
-            }
-        });
-
-
         // put story on the screen
         storytell = (TextView) findViewById(R.id.storyviewer);
         Intent calledActivity = getIntent();

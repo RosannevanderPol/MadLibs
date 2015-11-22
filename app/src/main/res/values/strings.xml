@@ -10,9 +10,7 @@
     <string name="storytitle">Here\'s your story:</string>
     <string name="title_activity_choosestory">choosestory</string>
     <string name="errorstory">Please choose a subject</string>
-    <string name="errorinput">Please enter letters</string>
-    <string name="inputword">Please enter a word</string>
-    <string name="placeholders">Now fill in a: </string>
+    <string name="placeholders">Please enter a: </string>
     <string name="placeholderscount">Words left to fill in: </string>
     <string name="fillin">Fill in the words for your story</string>
 </resources>

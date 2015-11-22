@@ -7,7 +7,6 @@ import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -39,6 +38,16 @@ public class choosewords extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_words);
 
+        translator = new TextToSpeech(this, new TextToSpeech.OnInitListener()
+        {
+            @Override
+            public void onInit(int status)
+            {
+                translator.speak("Please enter a " + parsing.getNextPlaceholder(), TextToSpeech.QUEUE_FLUSH, null);
+                textspeaker = true;
+            }
+        });
+
         // define all variables used
         btnSpeak = (ImageButton) findViewById(R.id.imageButton);
         inputtext = (EditText) findViewById(R.id.editText);
@@ -56,8 +65,6 @@ public class choosewords extends AppCompatActivity
             {
                 Intent convertTalk = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
                 convertTalk.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, "en-US");
-                convertTalk.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-                convertTalk.putExtra(RecognizerIntent.EXTRA_PROMPT, "Please say a" + placeholder);
                 try
                 {
                     startActivityForResult(convertTalk, RESULT_SPEECH);
@@ -100,9 +107,10 @@ public class choosewords extends AppCompatActivity
         inputtext.setText("");
 
         // if input are not letters: errormessage
-        if (!input.matches("[a-zA-Z\\s]+") && errorcheck == false)
+        if (!input.matches("[a-zA-Z\\s]+") && !errorcheck)
         {
-            textshow.setText(getString(R.string.errorinput));
+            Toast letter = Toast.makeText(getApplicationContext(), "Enter letters please.", Toast.LENGTH_SHORT);
+            letter.show();
             errorcheck = true;
         }
         // else pass input
@@ -115,11 +123,12 @@ public class choosewords extends AppCompatActivity
          // Method for handling the spoken/written input of the user.
         public void processInput(String input)
         {
-
         // Send input to parser.
         parsing.fillInPlaceholder(input);
-        if (errorcheck == true){
-            textshow.setText(getString(R.string.inputword));
+        if (errorcheck)
+        {
+            Toast letter = Toast.makeText(getApplicationContext(), "Enter letters please.", Toast.LENGTH_SHORT);
+            letter.show();
             errorcheck = false;
         }
 
@@ -133,8 +142,6 @@ public class choosewords extends AppCompatActivity
             storyscreen.putExtra("parsing", parsing);
             startActivity(storyscreen);
         }
-
-
 
         // If tts is ready, prompt the required word type through spoken text
         else if (textspeaker)
@@ -212,5 +219,3 @@ public class choosewords extends AppCompatActivity
         placeholdercount.append(" " + parsing.getPlaceholderRemainingCount());
     }
 }
-
-
