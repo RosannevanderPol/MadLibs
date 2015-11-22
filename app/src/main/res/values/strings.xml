@@ -13,4 +13,6 @@
     <string name="placeholders">Please enter a: </string>
     <string name="placeholderscount">Words left to fill in: </string>
     <string name="fillin">Fill in the words for your story</string>
+    <string name="speech_prompt">speech prompt</string>
+    <string name="speech_not_supported">speech not supported</string>
 </resources>

@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class choosewords extends AppCompatActivity
 {
-    public static final int RESULT_SPEECH = 1;
+    //public static final int RESULT_SPEECH = 1;
 
     public InputStream stream;
     public Story parsing;
@@ -31,6 +31,8 @@ public class choosewords extends AppCompatActivity
     public boolean errorcheck = false;
     public int counter;
     public ImageButton btnSpeak;
+
+    private final int REQ_CODE_SPEECH_INPUT = 100;
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -58,46 +60,82 @@ public class choosewords extends AppCompatActivity
         checker = extras.getInt("checker");
         getStory(checker);
 
-        btnSpeak.setOnClickListener(new View.OnClickListener()
-        {
+        btnSpeak.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
-                Intent convertTalk = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-                convertTalk.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, "en-US");
-                try
-                {
-                    startActivityForResult(convertTalk, RESULT_SPEECH);
-                    inputtext.setText("");
-                }
-                catch (ActivityNotFoundException a)
-                {
-                    Toast t = Toast.makeText(getApplicationContext(), "Ooops! Your device does not support Speech to Text", Toast.LENGTH_SHORT);
-                    t.show();
-                }
+            public void onClick(View v) {
+                promptSpeechInput();
             }
+
+            // Intent convertTalk = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+            // convertTalk.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, "en-US");
+            // try
+            //{
+            //    startActivityForResult(convertTalk, RESULT_SPEECH);
+            //    inputtext.setText("");
+            //}
+            //catch (ActivityNotFoundException a)
+            //{
+            //    Toast t = Toast.makeText(getApplicationContext(), "Ooops! Your device does not support Speech to Text", Toast.LENGTH_SHORT);
+            //    t.show();
+            //}
+            //}
         });
     }
 
+    // Showing google speech input dialog
+    private void promptSpeechInput() {
+        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, "en-US");
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT,
+                getString(R.string.speech_prompt));
+        try {
+            startActivityForResult(intent, REQ_CODE_SPEECH_INPUT);
+        } catch (ActivityNotFoundException a) {
+            Toast.makeText(getApplicationContext(),
+                    getString(R.string.speech_not_supported),
+                    Toast.LENGTH_SHORT).show();
+        }
+    }
 
-    // Receiving and processing spoken data
+    // Receiving speech input
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent input)
-        {
-            super.onActivityResult(requestCode, resultCode, input);
-            switch (requestCode) {
-            case RESULT_SPEECH: {
-                if (resultCode == RESULT_OK && null != input) {
-                    ArrayList<String> list = input.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
-                    String spokenText = list.get(0);
-                    processInput(spokenText);
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
-                    inputtext.setText(list.get(0));
+        switch (requestCode) {
+            case REQ_CODE_SPEECH_INPUT: {
+                if (resultCode == RESULT_OK && null != data) {
+
+                    ArrayList<String> result = data
+                            .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+                    inputtext.setText(result.get(0));
                 }
                 break;
             }
-            }
+
         }
+    }
+
+    // Receiving and processing spoken data
+   // @Override
+   // protected void onActivityResult(int requestCode, int resultCode, Intent input)
+   //     {
+    //        super.onActivityResult(requestCode, resultCode, input);
+     //       switch (requestCode) {
+       //     case RESULT_SPEECH: {
+         //       if (resultCode == RESULT_OK && null != input) {
+           //         ArrayList<String> list = input.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+             //       String spokenText = list.get(0);
+               //     processInput(spokenText);
+
+                 //   inputtext.setText(list.get(0));
+        //        }
+         //       break;
+      //      }
+      //      }
+      //  }
 
 
     public void inputWord(View z)
