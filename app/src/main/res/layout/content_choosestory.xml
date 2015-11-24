@@ -82,8 +82,7 @@
     android:layout_height="wrap_content"
     android:text="Next step"
     android:id="@+id/button2"
-    android:layout_marginBottom="48dp"
+    android:onClick="NextstepClicked"
     android:layout_alignParentBottom="true"
-    android:layout_centerHorizontal="true"
-    android:onClick="NextstepClicked" />
+    android:layout_centerHorizontal="true" />
 </RelativeLayout>
